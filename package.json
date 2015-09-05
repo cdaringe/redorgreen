@@ -1,0 +1,47 @@
+{
+  "name": "redorgreen",
+  "version": "1.0.0",
+  "description": "red or green chile, baby!",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "deploy": "export NODE_ENV='production' && npm ls && npm run build && rsync -avz ./ $DROPLET_IP:/www/redorgreen/"
+  },
+  "author": "cdaringe",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.7.4",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "browser_fingerprint": "0.0.6",
+    "css-loader": "^0.15.6",
+    "eslint": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "file-loader": "^0.8.4",
+    "json-loader": "^0.5.2",
+    "react-bootstrap": "^0.24.3",
+    "react-hot-loader": "^1.2.8",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "ampersand-app": "^1.0.4",
+    "axios": "^0.5.4",
+    "bluebird": "^2.9.34",
+    "chart.js": "^1.0.2",
+    "color": "^0.10.1",
+    "color-rainbow": "0.0.0",
+    "domready": "*",
+    "lodash.assign": "^3.2.0",
+    "qs": "^4.0.0",
+    "randomcolor": "^0.4.0",
+    "react": "^0.13.3",
+    "react-chartjs": "^0.6.0",
+    "react-notification-system": "^0.1.14",
+    "thenify": "^3.1.0"
+  },
+  "browser": {}
+}
