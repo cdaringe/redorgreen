@@ -14,14 +14,6 @@ module.exports.register = function(server, options, next) {
     });
 
     server.route({
-        method: 'GET',
-        path: '/',
-        handler: function(request, reply) {
-            return reply('get outta town!');
-        }
-    });
-
-    server.route({
         method: 'POST',
         path: '/vote',
         handler: function(request, reply) {

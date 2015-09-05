@@ -1,5 +1,6 @@
 'use strict';
 var Hapi = require('hapi');
+var path = require('path');
 var server = new Hapi.Server({
     connections: {
         routes: {
@@ -34,6 +35,13 @@ plugins.push({
             config: './chile.log'
         }]
     }
+});
+
+server.register(require('inert'), function (err) {
+    if (err) {
+        console.error('Failed to load plugin:', err);
+    }
+    console.info('inert loaded');
 });
 
 server.register(plugins, function(err) {

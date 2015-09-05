@@ -3,8 +3,6 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
@@ -31,9 +29,14 @@ module.exports = {
     ]
   }
 };
-if (process.env === 'production') {
-    var config;
-    module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin(config));
+if (process.env.NODE_ENV === 'production') {
+    console.info('UGLIFYING');
+    module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin({}));
 } else {
+    console.info('HOTIFYING');
+    module.exports.entry = module.exports.entry.concat([
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server'
+    ]);
     module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
