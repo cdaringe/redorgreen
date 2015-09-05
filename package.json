@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "deploy": "export NODE_ENV='production' && npm ls && npm run build && rsync -avz ./ $DROPLET_IP:/www/redorgreen/"
+    "deploy": "export NODE_ENV='production' && npm ls && npm run build && rsync -avz --exclude-from 'rsync-exclude.txt' ./ $DROPLET_IP:/www/redorgreen/"
   },
   "author": "cdaringe",
   "license": "ISC",
