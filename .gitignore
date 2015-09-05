@@ -1,3 +1,4 @@
 couch*.std*
 *.log
 dist/*
+bundle.js
