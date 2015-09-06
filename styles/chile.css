@@ -122,6 +122,7 @@ header, footer {
 
 .chile:hover {
     animation: spicy 1s linear infinite; /* IE 10+, Fx 29+ */
+    cursor: pointer;
     z-index: 100;
 }
 
