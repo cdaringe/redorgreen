@@ -2,3 +2,4 @@ couch*.std*
 *.log
 dist/*
 bundle.js
+node_modules/*
