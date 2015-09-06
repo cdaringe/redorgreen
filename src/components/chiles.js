@@ -37,7 +37,7 @@ export default class Chiles extends React.Component {
             render: function() {
                 return (
                     <div className="modal" style={{ display: 'block' }}>
-                        <div className="row vertical-align" style={{ height: '100%' }}>
+                        <div className="vertical-align" style={{ height: '100%' }}>
                             <div className="col-xs-10 col-xs-offset-1">
                                 <Heart chileColor={this.state.color} close={this.close.bind(this)}></Heart>
                             </div>
@@ -47,7 +47,7 @@ export default class Chiles extends React.Component {
             }.bind(this)
         });
         return (
-            <div className="row chile-types">
+            <div className="chile-types">
 
                 <Modal show={this.state.showModal} onHide={this.close.bind(this)} dialogComponent={ModalHeart}>
                 </Modal>

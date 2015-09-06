@@ -117,6 +117,7 @@ footer {
 }
 
 .chile-types {
+    flex: 1;
 }
 
 .chile:hover {

@@ -16,15 +16,15 @@ height: 100%;
 margin: 0;
 }
 .vbox {
-display:         flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .hbox {
-display:         flex;
-        flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 .space-between {
-        justify-content: space-between;
+    justify-content: space-between;
 }
 
 .main {

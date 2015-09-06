@@ -31,8 +31,7 @@ export default class Main extends React.Component {
                 <header>
                     <Header />
                 </header>
-                <section class="main hbox space-between">
-
+                <section className="hbox space-between">
                     <Chiles />
                 </section>
                 <footer className="banner">
