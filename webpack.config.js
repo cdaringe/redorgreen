@@ -22,7 +22,7 @@ module.exports = {
       loaders: ['react-hot', 'babel'],
       include: path.join(__dirname, 'src')
     },
-    { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions' },
+    { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 4 versions' },
     { test: /\.png$/, loader: 'url-loader?limit=100000' },
     { test: /\.jpg$/, loader: 'file-loader' },
     { test: /\.json$/, loader: 'json-loader' },

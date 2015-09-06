@@ -1,5 +1,28 @@
+/* global */
 body {
     background-image: url('../ristra5.png');
+}
+
+header, footer {
+    background-color: #FFE666;
+    box-shadow: inset 0 0 20px -5px #000000;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+/* end-global */
+
+/* Header/Title Styles */
+#rog_banner {
+    height: 20vw;
+    text-align: center;
+}
+
+#rog_title {
+    position: relative;
+    top: 30%;
 }
 
 #or {
@@ -37,8 +60,9 @@ body {
     -webkit-text-stroke-color: #880020;
     -webkit-text-fill-color: salmon;
 }
+/* end-header-styles */
 
-/* chile-bodies */
+/* chile-body-paths */
 .chile-outline {
     fill-rule: nonzero;
     clip-rule: nonzero;
@@ -73,29 +97,9 @@ body {
 .chile-reflection {
     fill: #FFFFFF;
 }
+/* end-chile-paths */
 
 /* chile-layout */
-.banner {
-    background-color: #FFE666;
-    box-shadow: inset 0 0 20px -5px #000000;
-}
-
-#header {
-    height: 20vw;
-    text-align: center;
-}
-
-footer {
-    flex: 1 1 auto;
-    min-height: 125px;
-    text-align: center;
-}
-
-#title {
-    position: relative;
-    top: 30%;
-}
-
 .chile-col {
     background:orange;
     height: 100%;
@@ -112,10 +116,6 @@ footer {
   background: rgba(0, 180, 0, 0.6);
 }
 
-.z-up {
-    z-index: 1;
-}
-
 .chile-types {
     flex: 1;
 }
@@ -125,9 +125,13 @@ footer {
     z-index: 100;
 }
 
+.z-up {
+    z-index: 1;
+}
+
 @media (max-width: 768px) { /*bootstrap xs grid*/
     .xs-chile-rotate {
-        animation: spicy 1s linear infinite; /* IE 10+, Fx 29+ */
+        animation: spicy 1s linear infinite;
         z-index: 100;
     }
 }
@@ -139,12 +143,9 @@ footer {
     75% { transform: rotate(-20deg); }
     100%   { transform: rotate(0deg); }
 }
+/* end-chile-layout */
 
-.vertical-align {
-    display: flex;
-    align-items: center;
-}
-
+/* heart-and-voting */
 .heart-container {
     max-height: 80vw;
 }
@@ -211,13 +212,14 @@ footer {
     border: 1px solid salmon;
     background-color: salmon;
 }
+/* end-heart-and-voting */
 
-@media (min-width: 768px) { /*bootstrap xs grid*/
-    /*.zia-container {
-        display: none;
-    }*/
+/* footer */
+footer {
+    flex: 1 1 auto;
+    min-height: 125px;
+    text-align: center;
 }
-
 
 #zia {
     margin-top: 8px;
@@ -235,3 +237,4 @@ footer {
     0%   { transform: rotate(0deg); }
     100%   { transform: rotate(359deg); }
 }
+/* end-footer */
