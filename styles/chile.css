@@ -17,12 +17,10 @@ header, footer {
 /* Header/Title Styles */
 #rog_banner {
     height: 20vw;
+    justify-content: center;
     text-align: center;
-}
-
-#rog_title {
-    position: relative;
-    top: 30%;
+    min-height: 100px;
+    padding: 10px 0 20px 0;
 }
 
 #or {
@@ -120,9 +118,11 @@ header, footer {
     flex: 1;
 }
 
+.chile {
+    cursor: pointer;
+}
 .chile:hover {
     animation: spicy 1s linear infinite; /* IE 10+, Fx 29+ */
-    cursor: pointer;
     z-index: 100;
 }
 
