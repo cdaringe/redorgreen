@@ -100,7 +100,6 @@ header, footer {
 /* chile-layout */
 .chile-col {
     background:orange;
-    height: 100%;
     padding: 20px;
     /*overflow: visible;*/
     overflow: hidden;
@@ -239,3 +238,8 @@ footer {
     100%   { transform: rotate(359deg); }
 }
 /* end-footer */
+
+/* compatibility */
+@-ms-viewport{
+  width: device-width;
+}

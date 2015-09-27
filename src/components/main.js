@@ -34,7 +34,7 @@ export default class Main extends React.Component {
                 <section className="hbox space-between">
                     <Chiles />
                 </section>
-                <footer className="banner">
+                <footer>
                     <div>
                         <Zia setStatsUp={this.setStatsUp.bind(this)} />
                     </div>
