@@ -50,8 +50,8 @@ export default class Main extends React.Component {
         const normalFooter = this.state.isXsViewPort ? null : footer;
 
         return (
-            <div>
-                <div className="vbox viewport">
+            <div className={normalFooter ? "vbox viewport" : ""}>
+                <div className={normalFooter ? "vbox viewport" : ""}>
                     <NotificationSystem ref="notificationSystem" />
                     <header>
                         <Header />
