@@ -42,6 +42,7 @@ export default class Main extends React.Component {
         }
         const footer = (
             <footer onClick={this.setStatsUp.bind(this)}>
+                <small>click for stats</small>
                 <Zia />
                 <small>made with love by <a href="https://github.com/cdaringe/" target="_blank">cdaringe</a></small>
             </footer>
