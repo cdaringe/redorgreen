@@ -3,3 +3,4 @@ couch*.std*
 dist/*
 bundle.js
 node_modules/*
+srv/node_modules/*

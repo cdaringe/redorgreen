@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 import axios from 'axios'
 import url from 'url'
-import randomColor from 'randomColor'
+import randomColor from 'randomcolor'
 var DoughnutChart = require("react-chartjs").Doughnut;
 
 export default class ModalStats extends React.Component {
