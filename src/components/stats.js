@@ -1,10 +1,9 @@
 import React from 'react'
-import {Button, Modal} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import axios from 'axios'
 import url from 'url'
 import randomColor from 'randomColor'
 var DoughnutChart = require("react-chartjs").Doughnut;
-
 
 export default class ModalStats extends React.Component {
     constructor(props) {
@@ -75,27 +74,15 @@ export default class ModalStats extends React.Component {
             statusBody = 'Loading...'
         }
         return (
-            <Modal.Dialog>
-                <Modal.Header>
-                    <Modal.Title>Chile Stats!</Modal.Title>
-                </Modal.Header>
+            <div className="container footer">
+                <h1>Chile Stats!</h1>
+                {statusBody}
 
-                <Modal.Body>
-                    {statusBody}
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button onClick={() => this.props.setStatsUp(false)} bsStyle='info'>Close</Button>
-                </Modal.Footer>
-            </Modal.Dialog>
+                <div>
+                    <Button onClick={() => this.props.setStatsUp(false)} bsStyle='info'>Back</Button>
+                </div>
+                <br/>
+            </div>
         );
     }
 };
-
-/*
-                    <div>
-                        {locationData.map(loc => {
-                            return <div>{loc.label}: {loc.value}</div>
-                        })}
-                    </div>
- */

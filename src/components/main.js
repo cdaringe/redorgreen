@@ -4,7 +4,7 @@ import Chiles from './chiles'
 import app from 'ampersand-app'
 import NotificationSystem from 'react-notification-system'
 import Zia from './zia'
-import ModalStats from './modal-stats'
+import Stats from './stats'
 import assign from 'lodash.assign'
 
 const isXsViewPort = () => Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 768;
@@ -38,7 +38,7 @@ export default class Main extends React.Component {
     render() {
         let modal = (<span id="stats-placeholder"></span>);
         if (this.state.statsUp) {
-            modal = <ModalStats setStatsUp={this.setStatsUp.bind(this)} />
+            return <Stats setStatsUp={this.setStatsUp.bind(this)} />
         }
         const footer = (
             <footer onClick={this.setStatsUp.bind(this)}>
