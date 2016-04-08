@@ -9,8 +9,8 @@ module.exports.register = function(server, options, next) {
         path: '/{param*}',
         handler: {
             directory: {
-                path: path.join(process.cwd(), '../'),
-                // index: ['index.html']
+                path: path.join(__dirname, '../../../'),
+                index: ['index.html']
             }
         }
     });

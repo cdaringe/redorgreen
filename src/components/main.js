@@ -52,7 +52,7 @@ export default class Main extends React.Component {
 
         return (
             <div className={normalFooter ? "vbox viewport" : ""}>
-                <div className={normalFooter ? "vbox viewport" : ""}>
+                <div id="chile_pane" className={normalFooter ? "vbox viewport" : ""}>
                     <NotificationSystem ref="notificationSystem" />
                     <header>
                         <Header />
@@ -62,7 +62,7 @@ export default class Main extends React.Component {
                     </section>
                     {normalFooter}
                 </div>
-                <div>
+                <div id="footer">
                     {xsFooter}
                     {modal}
                 </div>

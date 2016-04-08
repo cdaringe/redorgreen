@@ -11,7 +11,12 @@ header, footer, .footer {
 footer {
     cursor: pointer;
 }
-
+#chile_pane {
+  display: block;
+}
+#footer {
+  display: block;
+}
 .vertical-align {
     display: flex;
     align-items: center;
