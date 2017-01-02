@@ -1,20 +1,24 @@
 version: '2'
 services:
-  # senor-salsa-api:
-  #   image: cdaringe/redorgreen
-  #   environment:
-  #     NODE_ENV: production
-  #     DB_HOST: redorgreendb
-  #     DB_PORT: 5984
-  #   expose:
-  #     - 5984
-  #   depends_on:
-  #     - redorgreendb
-  #   restart: unless-stopped
+  redorgreenapi:
+    image: cdaringe/redorgreenapi
+    environment:
+      NODE_ENV: production
+      DB_HOST: redorgreendb
+      DB_PORT: 5984
+    expose:
+      - 5984
+    ports: # drop in prd!
+      - '8081:8081'
+    depends_on:
+      - redorgreendb
+    restart: unless-stopped
   redorgreendb:
     image: couchdb:1.6.1
-    ports:
-      - '5984:5984' # drop in prd!
+    expose:
+      - 5984
+    ports: # drop in prd!
+      - '5984:5984'
     volumes:
-      - '/www/redorgreen/couchdb:/var/lib/couchdb'
+      - '/www/redorgreen/couchdb:/usr/local/var/lib/couchdb'
     restart: unless-stopped

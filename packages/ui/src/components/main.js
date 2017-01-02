@@ -25,6 +25,10 @@ export default class Main extends React.Component {
   }
   componentDidMount () {
     window.notificationSystem = this.refs.notificationSystem
+    // window.notificationSystem.addNotification = function wrapNotifications () {
+    //   debugger // sometimes notifications just _stop_ showing up.
+    //   window.notificationSystem.addNotification.apply(window.notificationSystem, arguments)
+    // }
   }
   handleResize () {
     this.setState({ isXsViewPort: isXsViewPort() })

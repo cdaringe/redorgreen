@@ -52,6 +52,7 @@ export default class Heart extends React.Component {
       })
     })
     .catch(function (err) {
+      console.warn('unable to cast vote')
       let msg = null
       if (err.status === 409) { // already voted motha trucka
         msg = {
