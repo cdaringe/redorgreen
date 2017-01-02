@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Eczar';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Eczar-regular/Eczar-regular.eot');
+  src: url('../fonts/Eczar-regular/Eczar-regular.eot?#iefix') format('embedded-opentype'),
+       local('Eczar'),
+       local('Eczar-regular'),
+       url('../fonts/Eczar-regular/Eczar-regular.woff2') format('woff2'),
+       url('../fonts/Eczar-regular/Eczar-regular.woff') format('woff'),
+       url('../fonts/Eczar-regular/Eczar-regular.ttf') format('truetype'),
+       url('../fonts/Eczar-regular/Eczar-regular.svg#Eczar') format('svg');
+}
+
+@font-face {
+  font-family: 'Eczar';
+  font-weight: 800;
+  font-style: normal;
+  src: url('../fonts/Eczar-800/Eczar-800.eot');
+  src: url('../fonts/Eczar-800/Eczar-800.eot?#iefix') format('embedded-opentype'),
+       local('Eczar ExtraBold'),
+       local('Eczar-800'),
+       url('../fonts/Eczar-800/Eczar-800.woff2') format('woff2'),
+       url('../fonts/Eczar-800/Eczar-800.woff') format('woff'),
+       url('../fonts/Eczar-800/Eczar-800.ttf') format('truetype'),
+       url('../fonts/Eczar-800/Eczar-800.svg#Eczar') format('svg');
+}
+
