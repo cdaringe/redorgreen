@@ -9,5 +9,5 @@ import '../styles/chile.css'
 import '../styles/holy-grail.css'
 
 domready(() => {
-    React.render(<Main />, document.body)
-});
+  React.render(<Main />, document.body)
+})

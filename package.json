@@ -4,8 +4,7 @@
   "description": "red or green chile, baby!",
   "main": "index.js",
   "scripts": {
-    "build": "export NODE_ENV='production' && webpack",
-    "deploy": "export NODE_ENV='production' && npm ls && npm run build && rsync -avz --exclude-from 'rsync-exclude.txt' ./ $DROPLET_IP:/www/redorgreen/"
+    "build": "export NODE_ENV='production' && webpack && docker build -t cdaringe/redorgreen -t registry.cdaringe.com/redorgreen ."
   },
   "author": "cdaringe",
   "license": "ISC",
@@ -16,12 +15,11 @@
     "babel-loader": "^5.3.2",
     "browser_fingerprint": "0.0.6",
     "css-loader": "^0.15.6",
-    "eslint": "^1.0.0",
-    "eslint-plugin-react": "^3.1.0",
     "file-loader": "^0.8.4",
     "json-loader": "^0.5.2",
     "react-bootstrap": "^0.24.3",
     "react-hot-loader": "^1.2.8",
+    "standard": "^8.6.0",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.10.1",

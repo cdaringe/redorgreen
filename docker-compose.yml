@@ -1,0 +1,23 @@
+## do not deploy manually!  use deploy.js
+version: '2'
+services:
+  senor-salsa-api:
+    image: cdaringe/redorgreen
+    environment:
+      NODE_ENV: production
+      DB_HOST: thinksalsa
+      DB_PORT: 28015
+      API_PORT: 54154
+    ports:
+      - '54154:54154'
+    expose:
+      - 28015
+    restart: always
+    depends_on:
+      - thinksalsa
+  thinksalsa:
+    # image: rethinkdb
+    build: ./packages/senor-salsa-db
+    volumes:
+      - '/data/rethinkdb/senor-salsa-db:/data/rethinkdb/senor-salsa-db'
+    restart: always

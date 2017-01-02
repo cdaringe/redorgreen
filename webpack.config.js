@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 module.exports = {
   devtool: 'eval',
   entry: [
@@ -11,7 +11,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -25,18 +25,18 @@ module.exports = {
     { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 4 versions' },
     { test: /\.png$/, loader: 'url-loader?limit=100000' },
     { test: /\.jpg$/, loader: 'file-loader' },
-    { test: /\.json$/, loader: 'json-loader' },
+    { test: /\.json$/, loader: 'json-loader' }
     ]
   }
-};
+}
 if (process.env.NODE_ENV === 'production') {
-    console.info('UGLIFYING');
-    module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin({}));
+  console.info('UGLIFYING')
+  module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin({}))
 } else {
-    console.info('HOTIFYING');
-    module.exports.entry = module.exports.entry.concat([
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server'
-    ]);
-    module.exports.plugins.push(new webpack.HotModuleReplacementPlugin());
+  console.info('HOTIFYING')
+  module.exports.entry = module.exports.entry.concat([
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server'
+  ])
+  module.exports.plugins.push(new webpack.HotModuleReplacementPlugin())
 }

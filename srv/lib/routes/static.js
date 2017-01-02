@@ -1,24 +1,23 @@
-'use strict';
-var _ = require('lodash');
-var path = require('path');
+'use strict'
+var _ = require('lodash')
+var path = require('path')
 
-module.exports.register = function(server, options, next) {
+module.exports.register = function (server, options, next) {
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: path.join(__dirname, '../../../'),
+        index: ['index.html']
+      }
+    }
+  })
 
-    server.route({
-        method: 'GET',
-        path: '/{param*}',
-        handler: {
-            directory: {
-                path: path.join(__dirname, '../../../'),
-                index: ['index.html']
-            }
-        }
-    });
-
-    next();
-};
+  next()
+}
 
 module.exports.register.attributes = {
-    name: 'route-static',
-    version: '1.0.0'
-};
+  name: 'route-static',
+  version: '1.0.0'
+}
