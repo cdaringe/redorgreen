@@ -7,6 +7,11 @@ const env = Object.assign({}, process.env, { NODE_ENV: 'production' })
 const projectRoot = path.resolve(__dirname, '..')
 const uiDir = path.resolve(__dirname, '..', '..', 'ui')
 
+const REGISTRY = process.env.REGISTRY
+if (!REGISTRY) {
+  throw new Error('please set REGISTRY to tag image with (REGISTRY/redorgreen)')
+}
+
 if (process.argv.indexOf('--no-ui-build') === -1) {
   console.log('[redorgreenapi-build]: building web assets')
   cp.execSync(`npm run build`, { cwd: uiDir, env })
@@ -14,4 +19,4 @@ if (process.argv.indexOf('--no-ui-build') === -1) {
   cp.execSync(`cp -r ${uiDir}/build/* ${projectRoot}/static`)
 }
 console.log('[redorgreenapi-build]: containerizing')
-cp.execSync(`docker build -t cdaringe/redorgreenapi -t registry.cdaringe.com/redorgreenapi .`, { cwd: projectRoot, env })
+cp.execSync(`docker build -t cdaringe/redorgreen -t ${REGISTRY}/redorgreen .`, { cwd: projectRoot, env })
