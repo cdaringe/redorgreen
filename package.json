@@ -6,6 +6,6 @@
   "author": "cdaringe",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "2.0.0-beta.31"
+    "lerna": "2.0.0-beta.32"
   }
 }
