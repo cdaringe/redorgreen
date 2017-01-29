@@ -1,12 +1,21 @@
 'use strict'
 
 const _ = require('lodash')
-const bfinger = require('browser_fingerprint')
-const PouchW = require('pouchdb-wrapper')
+const bb = require('bluebird')
 const boom = require('boom')
-const db = require('../services/pouch-votes')
+const bfp = require('browser_fingerprint')
+const db = require('../services/votes')
 const locations = require('common').locations
 const locationValues = _.pluck(locations, 'value')
+
+const FINGERPRINT_OPTIONS = {
+  cookieKey: 'bfp',
+  toSetCookie: true,
+  onlyStaticElements: false,
+  settings: {
+    path: '/'
+  }
+}
 
 module.exports.register = function (server, options, next) {
   server.state('bfp', {
@@ -41,58 +50,28 @@ module.exports.register = function (server, options, next) {
 }
 
 var generateFingerprint = function (request, reply, server) {
-  var options = {
-    cookieKey: 'bfp',
-    toSetCookie: true,
-    onlyStaticElements: false,
-    settings: {
-      path: '/'
-    }
-  }
-  var existingBfp
-
-    // detect if fingerprint cookie already present. if so, test for existing
+  // detect if fingerprint cookie already present. if so, test for existing
   if (request.state && request.state.bfp) {
-    existingBfp = request.state.bfp
     console.log('existing fingerprint found: ', request.state.bfp)
-    return reply({}).state('bfp', existingBfp).code(409)
+    return reply({}).state('bfp', request.state.bfp).code(409)
   }
-    // else, get fingerprint
 
-  bfinger.fingerprint(request, options, function (fingerprint, elementHash, cookieHash) {
+  // else, get fingerprint
+  // BFP callback signature sucks: https://github.com/evantahler/browser_fingerprint/issues/9
+  return bfp.fingerprint(request, FINGERPRINT_OPTIONS, function (bfp, elementHash, cookieHash) {
     var resp = ''
-    var bfp = existingBfp || fingerprint
-    // cookieHash['Content-Type'] = 'text/plain';
-    // cookieHash['Cache-Control'] = 'public';
-    // show me. in the browser.
-    resp += 'Your Browser Fingerprint: ' + fingerprint + '\r\n\r\n'
-    // for(var i in elementHash){
-    //     resp += "Element " + i + ": " + elementHash[i] + "\r\n";
-    // }
-    // resp += JSON.stringify(request.headers, null, 2) + "\r\n";
-    // console.log('request from ' + request.info.remoteAddress + ', fingerprint -> ' + fingerprint);
-
-    db.get(bfp).then(function (r) {
-      reply(resp).state('bfp', bfp).code(409)
-      return { _replied: true }
-    })
+    resp += 'Your Browser Fingerprint: ' + bfp + '\r\n\r\n'
+    return db.get(bfp)
+    .then(() => reply(resp).state('bfp', bfp).code(409))
     .catch(function (err) {
-      if (err.status === 404) {
-        return db.put({
-          _id: fingerprint,
-          color: request.payload.color,
-          location: request.payload.location,
-          headers: request.headers
-        })
-      }
-      throw err
-    })
-    .then(function (r) {
-      if (r._replied) { return false }
-      reply(resp).state('bfp', bfp).code(200)
-    })
-    .catch(function (err) {
-      reply(boom.wrap(err)).code(500)
+      if (err.status !== 404) throw err
+      return db.put({
+        _id: bfp,
+        color: request.payload.color,
+        location: request.payload.location,
+        headers: request.headers
+      })
+      .then(() => reply(resp).state('bfp', bfp).code(200))
     })
   })
 }

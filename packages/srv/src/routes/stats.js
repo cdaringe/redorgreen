@@ -1,7 +1,7 @@
 'use strict'
 
 const _ = require('lodash')
-const db = require('../services/pouch-votes')
+const db = require('../services/votes')
 const locations = require('common').locations
 
 module.exports.register = function (server, options, next) {

@@ -1,6 +1,7 @@
 'use strict'
 
 require('perish')
+const { PORT, DB_HOST, DB_PORT } = require('./config')
 const Hapi = require('hapi')
 const path = require('path')
 const server = new Hapi.Server({
@@ -12,8 +13,7 @@ const server = new Hapi.Server({
     }
   }
 })
-const port = 8081
-server.connection({ port: port })
+server.connection({ port: PORT })
 const glob = require('glob')
 const plugins = []
 
@@ -47,6 +47,9 @@ server.register(plugins, err => {
   if (err) throw err
 })
 
-server.start(() => console.log('Server running at:', server.info.uri))
+server.start(() => {
+  console.log('Server running at:', server.info.uri)
+  console.log(`\tusing DB @: ${DB_HOST}:${DB_PORT}`)
+})
 
 module.exports = server
