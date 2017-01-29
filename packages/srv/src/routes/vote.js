@@ -1,7 +1,6 @@
 'use strict'
 
 const _ = require('lodash')
-const bb = require('bluebird')
 const boom = require('boom')
 const bfp = require('browser_fingerprint')
 const db = require('../services/votes')
@@ -59,8 +58,7 @@ var generateFingerprint = function (request, reply, server) {
   // else, get fingerprint
   // BFP callback signature sucks: https://github.com/evantahler/browser_fingerprint/issues/9
   return bfp.fingerprint(request, FINGERPRINT_OPTIONS, function (bfp, elementHash, cookieHash) {
-    var resp = ''
-    resp += 'Your Browser Fingerprint: ' + bfp + '\r\n\r\n'
+    var resp = 'Your Browser Fingerprint: ' + bfp + '\r\n\r\n'
     return db.get(bfp)
     .then(() => reply(resp).state('bfp', bfp).code(409))
     .catch(function (err) {
