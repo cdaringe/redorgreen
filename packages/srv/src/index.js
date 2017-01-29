@@ -17,25 +17,43 @@ server.connection({ port: PORT })
 const glob = require('glob')
 const plugins = []
 
-glob.sync(path.join(__dirname, 'routes/*.js')).forEach(function registerRoutes (file) {
-  plugins.push({
-    register: require(file),
-    options: {}
-  })
+const staticRoute = require('./routes/static')
+const statsRoute = require('./routes/stats')
+const voteRoute = require('./routes/vote')
+
+plugins.push({ register: staticRoute.register })
+plugins.push({ register: statsRoute.register })
+plugins.push({
+  register: voteRoute.register,
+  options: {
+    config: {
+      state: {
+          parse: true, // parse and store in request.state
+          failAction: 'error' // may also be 'ignore' or 'log'
+      }
+    }
+  }
 })
 
 plugins.push({
   register: require('good'),
   options: {
-    opsInterval: 1000,
-    reporters: [{
-      reporter: require('good-console'),
-      events: { log: '*', response: '*' }
-    }, {
-      reporter: require('good-file'),
-      events: { log: '*', error: '*' },
-      config: './chile.log'
-    }]
+    ops: {
+      interval: 1000
+    },
+    reporters: {
+      console: [
+        {
+          module: 'good-squeeze',
+          name: 'Squeeze',
+          args: [{ log: '*', response: '*', error: '*' }]
+        },
+        {
+          module: 'good-console'
+        },
+        'stdout'
+      ]
+    }
   }
 })
 

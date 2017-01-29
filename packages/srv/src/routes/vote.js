@@ -5,20 +5,21 @@ const boom = require('boom')
 const bfp = require('browser_fingerprint')
 const db = require('../services/votes')
 const locations = require('common').locations
-const locationValues = _.pluck(locations, 'value')
+const locationValues = _.map(locations, 'value')
 
 const FINGERPRINT_OPTIONS = {
   cookieKey: 'bfp',
-  toSetCookie: true,
-  onlyStaticElements: false,
-  settings: {
-    path: '/'
-  }
+  toSetCookie: false,
+  onlyStaticElements: true
 }
 
 module.exports.register = function (server, options, next) {
   server.state('bfp', {
     ttl: 1e13,
+    isSecure: false,
+    isHttpOnly: false,
+    encoding: 'base64json',
+    clearInvalid: false, // remove invalid cookies
     strictHeader: true // don't allow violations of RFC 6265
   })
 
@@ -26,10 +27,10 @@ module.exports.register = function (server, options, next) {
     method: 'POST',
     path: '/vote',
     handler: function (request, reply) {
-      if (!request.payload.color || !_.contains(['red', 'green'], request.payload.color)) {
+      if (!request.payload.color || !_.includes(['red', 'green'], request.payload.color)) {
         return reply(boom.wrap(new ReferenceError('invalid vote color, ' + request.payload.color)))
       }
-      if (!request.payload.location || !_.contains(locationValues, request.payload.location)) {
+      if (!request.payload.location || !_.includes(locationValues, request.payload.location)) {
         return reply(boom.wrap(new ReferenceError('invalid location, ' + request.payload.location)))
       }
       return generateFingerprint(request, reply, server)
@@ -57,7 +58,8 @@ var generateFingerprint = function (request, reply, server) {
 
   // else, get fingerprint
   // BFP callback signature sucks: https://github.com/evantahler/browser_fingerprint/issues/9
-  return bfp.fingerprint(request, FINGERPRINT_OPTIONS, function (bfp, elementHash, cookieHash) {
+  return bfp.fingerprint(request.raw.req, FINGERPRINT_OPTIONS, function (bfp, elementHash, cookieHash) {
+// "ab285d5078f0455dcaa5eea96cd283a460b8d5fd"
     var resp = 'Your Browser Fingerprint: ' + bfp + '\r\n\r\n'
     return db.get(bfp)
     .then(() => reply(resp).state('bfp', bfp).code(409))
