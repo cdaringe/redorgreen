@@ -37,7 +37,7 @@ export default class Chiles extends React.Component {
     let modal = null
     if (showModal) {
       modal = (
-        <Modal id='chile-modalz' show={this.state.showModal} onHide={this.close} bsClass=''>
+        <Modal id='chile-modal' show={this.state.showModal} onHide={this.close} bsClass=''>
           <Modal.Body>
             <ModalHeart color={this.state.color} close={this.close} />
           </Modal.Body>

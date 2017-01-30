@@ -3,7 +3,7 @@ import React from 'react'
 
 export default class Chile extends React.Component {
   constructor (props) {
-    super()
+    super(props)
     this.onClick = props.onClick
     this.state = {
       color: props.color === 'red' ? 'red' : 'green',
@@ -42,6 +42,6 @@ export default class Chile extends React.Component {
           </g>
         </g>
       </svg>
-        )
+    )
   }
 }
