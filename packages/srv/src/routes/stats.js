@@ -9,7 +9,7 @@ module.exports.register = function (server, options, next) {
     method: 'GET',
     path: '/stats',
     handler: function (request, reply) {
-      var counters = _.transform(_.indexBy(locations, 'value'), function (r, o, k) { r[k] = 0 })
+      var counters = _.transform(_.keyBy(locations, 'value'), function (r, o, k) { r[k] = 0 })
       var resp = {
         green: 0,
         red: 0,
