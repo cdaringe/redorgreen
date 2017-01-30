@@ -19,4 +19,10 @@ if (process.argv.indexOf('--no-ui-build') === -1) {
   cp.execSync(`cp -r ${uiDir}/build/* ${projectRoot}/static`)
 }
 console.log('[redorgreenapi-build]: containerizing')
-cp.execSync(`docker build -t cdaringe/redorgreenapi -t ${HOSTNAME}/redorgreenapi registry.${HOSTNAME}/redorgreenapi .`, { cwd: projectRoot, env })
+
+const cmd = `docker build -t cdaringe/redorgreenapi -t ${HOSTNAME}/redorgreenapi -t registry.${HOSTNAME}/redorgreenapi ${projectRoot}`
+console.log(`running: ${cmd}`)
+cp.execSync(
+  cmd,
+  { cwd: projectRoot, env }
+)
