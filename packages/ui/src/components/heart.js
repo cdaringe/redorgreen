@@ -1,3 +1,4 @@
+import './heart.css'
 import React from 'react'
 import Color from 'color'
 import VotePoem from './vote-poem'
@@ -115,7 +116,10 @@ export default class Heart extends React.Component {
       this.getHomeForm()
     return (
       <div className='heart-container'>
-        <svg viewBox='0 0 300 310' xmlns='http://www.w3.org/2000/svg'>
+        <svg
+          width='100%'
+          viewBox='0 0 300 310' xmlns='http://www.w3.org/2000/svg'
+          preserveAspectRatio='true'>
           <g>
             {this.props.children}
             <path
@@ -128,7 +132,7 @@ export default class Heart extends React.Component {
           </g>
         </svg>
         <div className='heart-body'>
-          <div className={closeVoteClasses} onClick={close} />
+          <button type='button' className={closeVoteClasses} onClick={close} />
           {voteComponent}
         </div>
       </div>

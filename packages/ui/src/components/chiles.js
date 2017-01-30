@@ -1,6 +1,5 @@
 import './chiles.css'
 import React from 'react'
-import { Modal } from 'react-bootstrap'
 import Chile from './chile'
 import ModalHeart from './ModalHeart'
 
@@ -35,15 +34,7 @@ export default class Chiles extends React.Component {
     // const confirmPane = (<div style="position: absolute; height: 100px; width: 100px")> no no no </div>);
     const { showModal } = this.state
     let modal = null
-    if (showModal) {
-      modal = (
-        <Modal id='chile-modal' show={this.state.showModal} onHide={this.close} bsClass=''>
-          <Modal.Body>
-            <ModalHeart color={this.state.color} close={this.close} />
-          </Modal.Body>
-        </Modal>
-      )
-    }
+    if (showModal) modal = <ModalHeart color={this.state.color} close={this.close} />
     return (
       <div id='chiles' {...this.props}>
         {modal}

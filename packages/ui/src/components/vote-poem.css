@@ -1,0 +1,9 @@
+#vote-poem-text {
+  text-align: left;
+  font-size: 3vw;
+  font-style: italic;
+}
+
+#vote-poem-text span {
+  display: block;
+}
