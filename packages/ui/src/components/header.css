@@ -1,0 +1,42 @@
+#rog_banner {
+  height: 20vw;
+  justify-content: center;
+  text-align: center;
+  min-height: 100px;
+}
+
+#or {
+  font-size: 9vw;
+  position: relative;
+  margin: 0 2.5vw;
+  font-style: italic;
+  text-stroke-color: black;
+  text-fill-color: rgba(0,0,0, 0.5);
+  text-stroke-width: 0.2vw;
+  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: rgba(0,0,0, 0.5);
+  -webkit-text-stroke-width: 0.2vw;
+}
+
+.title {
+  font-family: 'Eczar';
+  font-weight: 800;
+  font-size: 14vw;
+  text-stroke-width: 0.3vw;
+  -webkit-text-stroke-width: 0.3vw;
+}
+
+.title-green {
+  text-fill-color: #91F36D;
+  text-stroke-color: darkgreen;
+  -webkit-text-fill-color: #91F36D;
+  -webkit-text-stroke-color: darkgreen;
+}
+
+.title-red {
+  text-stroke-color: #880020;
+  -webkit-text-fill-color: salmon;
+  -webkit-text-stroke-color: #880020;
+  -webkit-text-fill-color: salmon;
+}
+/* end-header-styles */

@@ -1,3 +1,4 @@
+import './stats.css'
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import axios from 'axios'
@@ -17,6 +18,8 @@ export default class ModalStats extends React.Component {
       url: url.format({
         protocol: window.location.protocol,
         hostname: window.location.hostname,
+        // in dev mode, hit the actual API, vs the dev server
+        // probably should use the `proxy` feature instead at some point
         port: window.parseInt(window.location.port, 10) === 3000 ? 8081 : window.location.port,
         pathname: 'stats'
       })
@@ -81,15 +84,16 @@ export default class ModalStats extends React.Component {
       statusBody = 'Loading...'
     }
     return (
-      <div className='container footer'>
-        <h1>Chile Stats!</h1>
-        {statusBody}
-
+      <div id='stats'>
         <div>
-          <Button onClick={() => this.props.setStatsUp(false)} bsStyle='info'>Back</Button>
+          <h1>Chile Stats!</h1>
+          {statusBody}
+          <div>
+            <Button onClick={() => this.props.setStatsUp(false)} bsStyle='info'>Back</Button>
+          </div>
+          <br />
         </div>
-        <br />
       </div>
-        )
+    )
   }
 };

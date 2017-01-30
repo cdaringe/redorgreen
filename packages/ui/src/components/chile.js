@@ -1,3 +1,4 @@
+import './chile.css'
 import React from 'react'
 
 export default class Chile extends React.Component {

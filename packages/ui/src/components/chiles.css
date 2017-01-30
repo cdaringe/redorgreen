@@ -1,0 +1,41 @@
+#chiles {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.chile-col {
+  min-width: 200px;
+  min-height: 200px;
+  padding: 5vw;
+  flex-grow: 1;
+}
+
+@media (max-width: 500px) {
+  #chiles {
+    background: rgba(0, 244, 255, 0.7);
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+  }
+  .chile-col {
+    padding: 0;
+    flex-grow: 1;
+    max-width: 150px
+  }
+
+}
+
+#chile-col-red {
+  background: rgba(255, 100, 60, 0.8);
+}
+
+#chile-col-green {
+  background: rgba(0, 180, 0, 0.6);
+}

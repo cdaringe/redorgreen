@@ -1,0 +1,12 @@
+/*
+some stats are in main.css, just so we don't copy-pasta the container colors, etc
+*/
+
+#stats {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

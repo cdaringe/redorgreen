@@ -21,6 +21,31 @@ export default class Heart extends React.Component {
     this.setState(Object.assign({}, this.state, vote))
   }
 
+  getHomeForm () {
+    const { chileColor } = this.props
+    return (
+      <div>
+        <div className='vote-poem'>
+          <br />
+          <span>To make your vote count,</span>
+          <span>tell us where "home" is</span>
+        </div>
+        <div className='form-group'>
+          <label for='location'>{'I\'m from'}:</label>
+          <select id='location' className='form-control' placeholder='Select...'>
+            <option value=''>Select a location</option>
+            {locations.map(loc => <option value={loc.value}>{loc.label}</option>)}
+          </select>
+        </div>
+        <div
+          className={'btn vote-btn ' + (chileColor === 'red' ? 'btn-danger' : 'btn-success')}
+          onClick={this.vote}>
+          {chileColor.toUpperCase()}
+        </div>
+      </div>
+    )
+  }
+
   vote () {
     const { close } = this.props
     const location = document.querySelector('#location').value
@@ -70,6 +95,7 @@ export default class Heart extends React.Component {
     })
     .then(() => close())
   }
+
   render () {
     const { chileColor, close } = this.props
     const outline = Color(chileColor)
@@ -84,34 +110,12 @@ export default class Heart extends React.Component {
       fill = outline.clone().lighten(0.8).desaturate(0.7)
       closeVoteClasses += ' close-vote-btn-green'
     }
-    if (!this.state.vote.color) {
-      voteComponent = <VotePoem color={chileColor} chooseColor={this.chooseColor} />
-    } else {
-      voteComponent = (
-        <div>
-          <div className='vote-poem'>
-            <br />
-            <span>To make your vote count,</span>
-            <span>tell us where "home" is</span>
-          </div>
-          <div className='form-group'>
-            <label for='location'>{'I\'m from'}:</label>
-            <select id='location' className='form-control' placeholder='Select...'>
-              <option value=''>Select a location</option>
-              {locations.map(loc => <option value={loc.value}>{loc.label}</option>)}
-            </select>
-          </div>
-          <div
-            className={'btn vote-btn ' + (chileColor === 'red' ? 'btn-danger' : 'btn-success')}
-            onClick={this.vote}>
-            {chileColor.toUpperCase()}
-          </div>
-        </div>
-      )
-    }
+    voteComponent = !this.state.vote.color ?
+      <VotePoem color={chileColor} chooseColor={this.chooseColor} /> :
+      this.getHomeForm()
     return (
       <div className='heart-container'>
-        <svg viewBox='0 0 300 310' xmlns='http://www.w3.org/2000/svg' {...this.props} >
+        <svg viewBox='0 0 300 310' xmlns='http://www.w3.org/2000/svg'>
           <g>
             {this.props.children}
             <path
@@ -128,7 +132,7 @@ export default class Heart extends React.Component {
           {voteComponent}
         </div>
       </div>
-        )
+    )
   }
 }
 

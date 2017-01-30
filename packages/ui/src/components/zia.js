@@ -48,7 +48,7 @@ export default class Zia extends React.Component {
       ziaWidth = this.state.footerHeight * 0.9
     }
     return (
-      <div>
+      <div style={{cursor: 'pointer'}}>
         <svg
           id='zia'
           ref={zia => { this.zia = zia }}
