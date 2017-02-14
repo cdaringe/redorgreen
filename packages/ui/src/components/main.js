@@ -37,8 +37,8 @@ export default class Main extends React.Component {
         <Chiles className='layout-row' />
         <footer className='layout-row' onClick={this.setStatsUp.bind(this)}>
           <div className='layout-column'>
-            <small>click for stats</small>
             <Zia />
+            <small style={{cursor: 'pointer'}}><a>click for stats</a></small>
             <small>made with love by <a href='https://github.com/cdaringe/' target='_blank'>cdaringe</a></small>
           </div>
         </footer>

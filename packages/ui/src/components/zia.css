@@ -1,0 +1,16 @@
+#zia {
+  margin-top: 8px;
+  border-radius: 50%;
+  transition: all .25s ease-in-out;
+  animation: zia 60s linear infinite;
+}
+
+#zia:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px #00F3FF;
+}
+
+@keyframes zia {
+  0%  { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}

@@ -62,7 +62,7 @@
   z-index: 100;
 }
 
-@-webkit-keyframes spicy {
+@keyframes spicy {
   0%   { transform: rotate(0deg); }
   25%   { transform: rotate(20deg) scale(1.15); z-index: 1000; }
   50% { transform: rotate(0deg); z-index: 1; }
@@ -73,27 +73,11 @@
 
 /* footer */
 footer {
-    flex: 1 1 auto;
-    min-height: 135px;
-    text-align: center;
+  flex: 1 1 auto;
+  min-height: 135px;
+  text-align: center;
 }
 
-#zia {
-    margin-top: 8px;
-    border-radius: 50%;
-    transition: all .25s ease-in-out;
-    animation: zia 120s;
-}
-
-#zia:hover {
-    cursor: pointer;
-    box-shadow: 0 0 15px #00F3FF;
-}
-
-@-webkit-keyframes zia {
-    0%   { transform: rotate(0deg); }
-    100%   { transform: rotate(359deg); }
-}
 /* end-footer */
 
 /* compatibility */
