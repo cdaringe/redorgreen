@@ -6,13 +6,18 @@ services:
       NODE_ENV: production
       DB_HOST: redorgreendb
       DB_PORT: 5984
+      VIRTUAL_PORT: 8081
+      VIRTUAL_HOST: redorgreen.$HOSTNAME,www.redorgreen.$HOSTNAME
+      CERT_NAME: server
     ports:
       - '8081:8081'
     depends_on:
       - redorgreendb
     restart: unless-stopped
+    network_mode: bridge
   redorgreendb:
     image: couchdb:1.6.1
     restart: unless-stopped
+    network_mode: bridge
     volumes:
       - '/www/redorgreen/couchdb:/usr/local/var/lib/couchdb'
