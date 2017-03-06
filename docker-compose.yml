@@ -15,9 +15,11 @@ services:
       - redorgreendb
     restart: unless-stopped
     network_mode: bridge
+    links:
+      - redorgreendb # https://docs.docker.com/compose/networking/#links
   redorgreendb:
     image: couchdb:1.6.1
     restart: unless-stopped
-    network_mode: bridge
+    network_mode: bridge # https://github.com/jwilder/nginx-proxy/issues/622
     volumes:
       - '/www/redorgreen/couchdb:/usr/local/var/lib/couchdb'
